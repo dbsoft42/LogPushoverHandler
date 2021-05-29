@@ -8,7 +8,7 @@ If you use the standard Python *logging* module and would like to push some of y
 ### Installation and setup
 Download the files.
 ```
-git clone https://github.com/dbsoft42/adsb-data-collector-mongodb.git
+git clone https://github.com/dbsoft42/LogPushoverHandler.git
 ```
 Put the *LogPushoverHandler.py* file in a place from where it can be imported in your application. This can also be the same directory where your application script resides.
 

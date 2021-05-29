@@ -16,6 +16,7 @@ Put the *LogPushoverHandler.py* file in a place from where it can be imported in
 Instantiate the handler. Following code snippet shows the necessary and optional parameters.
 ```python
 from LogPushoverHandler import LogPushoverHandler
+
 pushover_handler = LogPushoverHandler(
                     token='your Pushover app token',
                     user='your Pushover user string',
@@ -40,20 +41,21 @@ pushover_handler = LogPushoverHandler(
                     user='your Pushover user string'
                     )
 pushover_handler.setFormatter(logging.Formatter('%(message)s'))
-pushover_handler.setLevel(logging.DEBUG)
+pushover_handler.setLevel(logging.CRITICAL)
 logger.addHandler(pushover_handler)
 ```
 
 ### A Few Pointers
 * Although a lot of Pushover parameters can be passed while instantiating the handler, it is recommended to let as many of them as possible come from the log message itself. For example, we automatically get the time the log message was generated and use that (you don't need to format the message to have the time for this to work). Likewise the Pushover notification priority is determined from the log level (details below). However, if you supply any of these parameters while instantiating the handler, those will be used instead. You can see that doing so for some parameters like the timestamp may not be accurate.
 * We use the log level to assign the priority for the Pushover notification. Below is the mapping.\
-Python Log Level | Pushover Priority
-:----------------|-----------------:
-DEBUG            |-2
-INFO             |-1
-WARNING          |-1
-ERROR            |0
-CRITICAL         |1
+
+  Python Log Level | Pushover Priority
+  :----------------|-----------------:
+  DEBUG            |-2
+  INFO             |-1
+  WARNING          |-1
+  ERROR            |0
+  CRITICAL         |1
 
 * You can override the default priority mapping seen above with your customized mapping by supplying dictionary as the *priorities* parameter to LogPushoverHandler. Pushover priorities are detailed [here](https://pushover.net/api#priority). Here is an example of overriding the default priorities.
 ```python

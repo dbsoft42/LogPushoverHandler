@@ -32,6 +32,7 @@ You can also specify your custom Pushover priority mapping here. More on this be
 Here is a sample usage code snippet.
 ```python
 from LogPushoverHandler import LogPushoverHandler
+import logging
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.ERROR)
@@ -47,7 +48,7 @@ logger.addHandler(pushover_handler)
 
 ### A Few Pointers
 * Although a lot of Pushover parameters can be passed while instantiating the handler, it is recommended to let as many of them as possible come from the log message itself. For example, we automatically get the time the log message was generated and use that (you don't need to format the message to have the time for this to work). Likewise the Pushover notification priority is determined from the log level (details below). However, if you supply any of these parameters while instantiating the handler, those will be used instead. You can see that doing so for some parameters like the timestamp may not be accurate.
-* We use the log level to assign the priority for the Pushover notification. Below is the mapping.\
+* We use the log level to assign the priority for the Pushover notification. Below is the mapping.
 
   Python Log Level | Pushover Priority
   :----------------|-----------------:
